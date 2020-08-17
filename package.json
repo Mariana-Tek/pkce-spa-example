@@ -12,7 +12,11 @@
     "build-prod": "parcel build src/index.html",
     "test": "jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "es-cookie": "^1.3.2",
+    "pkce-challenge": "^2.1.0",
+    "query-string": "^6.13.1"
+  },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "jest": "^26.4.0",
