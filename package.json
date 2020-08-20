@@ -13,9 +13,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "client-oauth2": "^4.3.3",
     "es-cookie": "^1.3.2",
-    "pkce-challenge": "^2.1.0",
-    "query-string": "^6.13.1"
+    "pkce-challenge": "^2.1.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
