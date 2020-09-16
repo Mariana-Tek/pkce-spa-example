@@ -178,6 +178,14 @@ function toggleButtonDisabling() {
  * In a more typical SPA this would be broken up by component or route.
  */
 window.addEventListener("DOMContentLoaded", async () => {
+  // 0. Go straight to login flow?
+  const url = new URL(location.href);
+  const login = url.searchParams.get("login");
+
+  if (login) {
+    return handleLoginButtonClick();
+  }
+
   // 1. Interaction
   // setting up events to power interactions
   const loginButton = document.getElementById("login-button");
@@ -190,7 +198,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // 2. Are we attempting to authenticate?
   // this section establishes whether we are currently authenticating
-  const url = new URL(location.href);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
 
