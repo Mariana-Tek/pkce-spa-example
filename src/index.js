@@ -38,8 +38,8 @@ const AUTH_SESSION_NAME = "mariana-auth-session";
 
 const marianaAuth = new ClientOAuth2({
   clientId: "O7NS6vs8ET2UUUcheTgUFVDex8j6JAb6zzOeymkw",
-  accessTokenUri: "https://cousteau-r45kxk.marianatek.com/o/token/",
-  authorizationUri: "https://cousteau-r45kxk.marianatek.com/o/authorize",
+  accessTokenUri: "https://demo-n9c5fm.marianatek.com/o/token/",
+  authorizationUri: "https://demo-n9c5fm.marianatek.com/o/authorize",
   redirectUri: window.location.origin,
   scopes: ["read:account"],
 });
@@ -67,7 +67,6 @@ function handleLoginButtonClick() {
     query: {
       code_challenge: code_challenge,
       code_challenge_method: "S256",
-      prompt: "true",
     },
   });
 
@@ -79,6 +78,7 @@ function handleLoginButtonClick() {
  */
 function handleLogoutButtonClick() {
   localStorage.removeItem(AUTH_SESSION_NAME);
+  document.getElementById('name').remove();
   toggleButtonDisabling();
 }
 
@@ -132,7 +132,7 @@ async function getSelf() {
 
   // add the access token to the `Authorization` header to make requests
   const res = await fetch(
-    "https://cousteau-r45kxk.marianatek.com/api/users/self",
+    "https://demo-n9c5fm.marianatek.com/api/users/self",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -216,7 +216,12 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     // simple example executing code in an authenticated state with data
     // from the server
-    window.alert(`Welcome ${self.first_name}`);
+    const app = document.getElementById("app");
+    const nameHeader = document.createElement("H1");
+    nameHeader.setAttribute('id', 'name');
+    const nameText = document.createTextNode(`Welcome ${self.first_name}`);
+    nameHeader.appendChild(nameText);
+    app.appendChild(nameHeader);
 
     toggleButtonDisabling();
   }
