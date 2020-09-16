@@ -78,7 +78,8 @@ function handleLoginButtonClick() {
  */
 function handleLogoutButtonClick() {
   localStorage.removeItem(AUTH_SESSION_NAME);
-  document.getElementById('name').remove();
+  const app = document.getElementById("app");
+  app.innerHTML = '<h1>You\'re logged out.</h1>';
   toggleButtonDisabling();
 }
 
@@ -217,11 +218,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     // simple example executing code in an authenticated state with data
     // from the server
     const app = document.getElementById("app");
-    const nameHeader = document.createElement("H1");
-    nameHeader.setAttribute('id', 'name');
-    const nameText = document.createTextNode(`Welcome ${self.first_name}`);
-    nameHeader.appendChild(nameText);
-    app.appendChild(nameHeader);
+    app.innerHTML = `<h1>Welcome ${self.first_name}</h1>`;
 
     toggleButtonDisabling();
   }
